@@ -65,10 +65,12 @@ async function initServer (Config) {
 
   function notiOnTime() {
     const [LunchH, LunchM, LunchS] = LunchHHmmss.split(':')
-    if ( moment().hours() == LunchH && moment().minutes() == LunchM && moment().seconds() == LunchS ) {
-      const channelName = ChannelNameForNoti
-      bot.postMessageToChannel(channelName, '야호!! 곧 점심시간입니다!! 메뉴를 선택해주세요!!')
-    }
+      if (moment().day() > 0 && moment().day()  <= 5) {
+        if ( moment().hours() == LunchH && moment().minutes() == LunchM && moment().seconds() == LunchS ) {
+          const channelName = ChannelNameForNoti
+          bot.postMessageToChannel(channelName, '야호!! 곧 점심시간입니다!! 메뉴를 선택해주세요!!')
+        }
+      }
     const now = moment().format("HH:mm:ss")
   }
 
